@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Stuff extends BaseController {
 
-    public function sth() {
-        return view('newView', ['sth' => 'Stuff']);
+    public function sth($what) {
+        return view('newView', ['sth' => $what]);
     }
 }

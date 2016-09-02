@@ -19,4 +19,4 @@ Route::get('test', function () {
     return view('welcome');
 });
 
-Route::get('stuff', 'Stuff@sth');
+Route::get('stuff/{what}', 'Stuff@sth');
