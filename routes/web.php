@@ -19,6 +19,4 @@ Route::get('test', function () {
     return view('welcome');
 });
 
-Route::get('stuff/{what}', 'Stuff@sth');
-
 Route::resource('articles', 'ArticlesController');
