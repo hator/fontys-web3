@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/web3/public/'),
+    'url' => env('APP_URL', 'http://i373073.iris.fhict.nl/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:ULreFGiKdNXiSJ9Z4fQpEyZ2ypKcYS+MsbxbjBE/3qc='),
 
     'cipher' => 'AES-256-CBC',
 
