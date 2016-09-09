@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Car {{ $article->id }}</title>
+    <title>Article {{ $article->id }}</title>
   </head>
   <body>
-    <h1>Car {{ $article->id }}</h1>
+    <h1>Article {{ $article->id }}</h1>
     <ul>
       <li>Title: {{ $article->title }}</li>
       <li>Text: {{ $article->content }}</li>
