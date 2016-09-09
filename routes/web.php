@@ -20,3 +20,5 @@ Route::get('test', function () {
 });
 
 Route::get('stuff/{what}', 'Stuff@sth');
+
+Route::resource('articles', 'ArticlesController');
