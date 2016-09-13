@@ -13,11 +13,9 @@
 
 Route::get('/', 'ArticlesController@index');
 
-Route::get('test', function () {
-    return view('welcome');
-});
-
-Route::resource('articles', 'ArticlesController');
+Route::resource('articles', 'ArticlesController', ['only' => [
+    'index', 'show'
+]]);
 
 Auth::routes();
 
