@@ -19,4 +19,6 @@ Route::resource('articles', 'ArticlesController', ['only' => [
 
 Auth::routes();
 
+Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
+
 Route::get('/home', 'HomeController@index');
