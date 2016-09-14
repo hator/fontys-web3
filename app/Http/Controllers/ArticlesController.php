@@ -58,9 +58,7 @@ class ArticlesController extends Controller
     $article = new Article;
     $article->title = $request->title;
     $article->content = $request->content;
-    $article->author = Auth::user()->id;
-
-    $article->save();
+    Auth::user()->articles()->save($article);
 
     return redirect()->action('ArticlesController@show', ['id' => $article->id]);
   }
@@ -68,22 +66,31 @@ class ArticlesController extends Controller
   public function edit($id)
   {
     $article = Article::find($id);
+    $this->authorize('update', $article);
+
     return view('articles.edit', array('article' => $article));
   }
 
   public function update(Request $request, $id)
   {
      $article = Article::find($id);
+     $this->authorize('update', $article);
+
      $article->title = $request->title;
      $article->content = $request->content;
-
      $article->save();
+
+     return redirect()->action('ArticlesController@show', ['id' => $article->id]);
   }
 
   public function destroy($id)
   {
       $article = Article::find($id);
+      $this->authorize('delete', $article);
+
       $article->delete();
+
+      return redirect()->action('ArticlesController@index');
   }
 
 }

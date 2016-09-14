@@ -30,7 +30,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
-        //
+        return $user->id === $article->author->id;
     }
 
     /**
@@ -42,6 +42,6 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article)
     {
-        //
+        return $user->id === $article->author->id;
     }
 }
