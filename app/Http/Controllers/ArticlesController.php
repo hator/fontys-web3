@@ -49,4 +49,20 @@ class ArticlesController extends Controller
 
     $article->save();
   }
+
+  public function edit($id)
+  {
+    $article = Article::find($id);
+    return view('articles.edit', array('article' => $article));
+  }
+
+  public function update(Request $request, $id)
+   {
+       $article = Article::find($id);
+       $article->title = $request->title;
+       $article->content = $request->content;
+
+       $article->save();
+   }
+
 }
