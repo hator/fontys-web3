@@ -13,7 +13,12 @@
     {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
 </div>
 
-{!! Form::submit('Create New Task', ['class' => 'btn btn-primary']) !!}
+{{ Form::open(array('url' => 'articles/' . $article->id, 'class' => 'pull-right')) }}
+    {{ Form::hidden('_method', 'DELETE') }}
+    {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
+{{ Form::close() }}
+
+{!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
 
 {!! Form::close() !!}
 @endsection

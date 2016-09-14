@@ -72,12 +72,18 @@ class ArticlesController extends Controller
   }
 
   public function update(Request $request, $id)
-   {
-       $article = Article::find($id);
-       $article->title = $request->title;
-       $article->content = $request->content;
+  {
+     $article = Article::find($id);
+     $article->title = $request->title;
+     $article->content = $request->content;
 
-       $article->save();
-   }
+     $article->save();
+  }
+
+  public function destroy($id)
+  {
+      $article = Article::find($id);
+      $article->delete();
+  }
 
 }
