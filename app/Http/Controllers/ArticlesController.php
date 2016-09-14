@@ -32,20 +32,33 @@ class ArticlesController extends Controller
       return view('articles.show', array('article' => $article));
   }
 
+  /**
+   * Display the article creation form.
+   *
+   * @return Response
+   */
   public function create()
   {
+    $this->authorize('create', Article::class);
     return view('articles.create');
   }
 
+  /**
+   * Add new article.
+   *
+   * @param  Request  $request
+   * @return Response
+   */
   public function store(Request $request)
   {
-    // Validate the request...
+    $this->authorize('create', Article::class);
+
+    // TODO Validate the request...
+
     $article = new Article;
     $article->title = $request->title;
     $article->content = $request->content;
-    $user = Auth::user();
-    $article->author = $user->id;
-
+    $article->author = Auth::user()->id;
 
     $article->save();
   }
