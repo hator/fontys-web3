@@ -27,8 +27,8 @@ class ProfileController extends Controller
     public function show($id)
     {
       $profile = User::find($id);
-      \Debugbar::info($profile);
       $this->authorize('show', $profile);
+
       return view('user.show', array('user' => $profile));
     }
 }
