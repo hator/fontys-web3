@@ -61,5 +61,7 @@ class ArticlesController extends Controller
     $article->author = Auth::user()->id;
 
     $article->save();
+
+    return redirect()->action('ArticlesController@show', ['id' => $article->id]);
   }
 }
