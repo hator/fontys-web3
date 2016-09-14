@@ -1,14 +1,13 @@
 @extends('layouts.master')
 
 @section('title')
-  Article {{ $article->id }}
+  {{ $article->title }} -- article #{{ $article->id }}
 @endsection
 
 @section('content')
-  <h1>Article {{ $article->id }}</h1>
-  <ul>
-    <li>Title: {{ $article->title }}</li>
-    <li>Text: {{ $article->content }}</li>
-    <li>Author: {{ $article->author }}</li>
-  </ul>
+  <div class="article">
+    <h1>{{ $article->title }} <span class="article-id">#{{ $article->id }}</span></h1>
+    <div class="article-author">{{ $article->author }}</div>
+    <div class="article-content">{{ $article->content }}</div>
+  </div>
 @endsection
