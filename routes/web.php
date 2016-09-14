@@ -14,7 +14,7 @@
 Route::get('/', 'ArticlesController@index');
 
 Route::resource('articles', 'ArticlesController', ['only' => [
-    'index', 'show'
+    'index', 'show', 'create', 'store'
 ]]);
 
 Auth::routes();
