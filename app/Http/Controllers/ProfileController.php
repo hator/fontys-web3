@@ -31,4 +31,21 @@ class ProfileController extends Controller
 
       return view('user.show', array('user' => $profile));
     }
+
+    public function edit($id)
+    {
+      $user = User::find($id);
+      return view('user.edit', array('user' => $user));
+    }
+
+    public function update(Request $request, $id)
+    {
+       $user = User::find($id);
+       $user->name = $request->name;
+       $user->email = $request->email;
+       $user->password = bcrypt($request->password);
+
+       $user->save();
+    }
+
 }
