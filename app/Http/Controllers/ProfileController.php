@@ -53,9 +53,10 @@ class ProfileController extends Controller
 		$validator = $this->validator($request->all());
 		if($validator->fails())
 		{
-			return redirect()->action('ProfileController@edit', ['id' => $id])
-			->withErrors($validator)
-			->withInput();
+			return redirect()
+				->action('ProfileController@edit', ['id' => $id])
+				->withErrors($validator)
+				->withInput();
 		}
 		else
 		{
@@ -64,6 +65,8 @@ class ProfileController extends Controller
 			$user->password = User::encryptPassword($request->password);
 
 			$user->save();
+
+			return redirect()->action('ProfileController@show', ['id' => $id]);
 		}
 	}
 }
