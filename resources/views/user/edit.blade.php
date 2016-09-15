@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Edit your profile')
+
 @section('content')
 {{ Form::model($user, array('route' => array('profile.update', $user->id), 'method' => 'PUT')) }}
 
