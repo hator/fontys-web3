@@ -21,5 +21,9 @@
             </div>
         </div>
     </div>
+    <div class="articles">
+        <h2>Your articles</h2>
+        @include('articles.list', array('articles' => $articles))
+    </div>
 </div>
 @endsection

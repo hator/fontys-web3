@@ -32,9 +32,13 @@ class ProfileController extends Controller
 	public function show($id)
 	{
 		$profile = User::find($id);
+
 		$this->authorize('show', $profile);
 
-		return view('user.show', array('user' => $profile));
+		return view('user.show', array(
+			'user' => $profile,
+			'articles' => $profile->articles,
+		));
 	}
 
 	public function edit($id)
@@ -49,7 +53,6 @@ class ProfileController extends Controller
 	{
 		$user = User::find($id);
 		$this->authorize('update', $user);
-		\Debugbar::error($request);
 		$validator = $this->validator($request->all());
 		if($validator->fails())
 		{
