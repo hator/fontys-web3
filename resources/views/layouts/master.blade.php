@@ -15,6 +15,7 @@
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 @if (Auth::check())
+                    <a class="btn btn-warning" href="{{ action('HomeController@index') }}">Your profile</a>
                     <a class="btn btn-primary" href="{{ action('ArticlesController@index') }}">List articles</a>
 
                     @can('create', App\Article::class)
