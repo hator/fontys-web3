@@ -39,26 +39,26 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
+      $profile = User::find($id);
       $this->authorize('update', $profile);
 
-      $profile = User::find($id);
       return view('user.edit', array('user' => $profile));
     }
 
     public function update(Request $request, $id)
     {
-      $this->authorize('update', $profile);
+      $user = User::find($id);
+      $this->authorize('update', $user);
       \Debugbar::error($request);
       $validator = $this->validator($request->all());
       if($validator->fails())
       {
-        return redirect('/profile/5/edit')
+        return redirect()->action('ProfileController@edit', ['id' => $id])
                      ->withErrors($validator)
                      ->withInput();
       }
       else
       {
-        $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = User::encryptPassword($request->password);
