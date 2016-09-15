@@ -10,4 +10,5 @@
     <div class="article-author">{{ $article->author->name }}</div>
     <div class="article-content">{{ $article->content }}</div>
   </div>
+  <a class="btn btn-warning" href="{{ action('ArticlesController@edit', ['id' => $article->id]) }}">Edit/delete article</a>
 @endsection
