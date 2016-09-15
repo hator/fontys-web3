@@ -10,10 +10,10 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the user.
+     * Determine whether the user can view the profile.
      *
      * @param  App\User  $user
-     * @param  App\User  $user
+     * @param  App\User  $profile
      * @return mixed
      */
     public function show(User $user, User $profile)
@@ -22,7 +22,7 @@ class UserPolicy
     }
 
     /**
-     * Determine whether the user can create users.
+     * Determine whether the user can create profile.
      *
      * @param  App\User  $user
      * @return mixed
@@ -33,25 +33,25 @@ class UserPolicy
     }
 
     /**
-     * Determine whether the user can update the user.
+     * Determine whether the user can update the profile.
      *
      * @param  App\User  $user
-     * @param  App\User  $user
+     * @param  App\User  $profile
      * @return mixed
      */
-    public function update(User $user, User $user)
+    public function update(User $user, User $profile)
     {
         //
     }
 
     /**
-     * Determine whether the user can delete the user.
+     * Determine whether the user can delete the profile.
      *
      * @param  App\User  $user
-     * @param  App\User  $user
+     * @param  App\User  $profile
      * @return mixed
      */
-    public function delete(User $user, User $user)
+    public function delete(User $user, User $profile)
     {
         //
     }
