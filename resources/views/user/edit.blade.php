@@ -27,18 +27,13 @@
 
 <div class="form-group">
     {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
-    {!! Form::password('password', null, ['class' => 'form-control']) !!}
+    {!! Form::password('password', ['class' => 'form-control']) !!}
 </div>
 @if ($errors->has('password'))
     <span class="help-block">
         <strong>{{ $errors->first('password') }}</strong>
     </span>
 @endif
-
-<!--{{ Form::open(array('url' => 'user/' . $user->id, 'class' => 'pull-right')) }}
-    {{ Form::hidden('_method', 'DELETE') }}
-    {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
-{{ Form::close() }}-->
 
 {!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
 
