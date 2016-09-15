@@ -34,12 +34,16 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
+      $this->authorize('update', $profile);
+
       $profile = User::find($id);
       return view('user.edit', array('user' => $profile));
     }
 
     public function update(Request $request, $id)
     {
+       $this->authorize('update', $profile);
+
        $user = User::find($id);
        $user->name = $request->name;
        $user->email = $request->email;
