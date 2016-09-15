@@ -19,6 +19,11 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
+    protected function validator(array $data)
+    {
+        return User::validator($data);
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -42,14 +47,24 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-       $this->authorize('update', $profile);
+      $this->authorize('update', $profile);
+      \Debugbar::error($request);
+      $validator = $this->validator($request->all());
+      if($validator->fails())
+      {
+        return redirect('/profile/5/edit')
+                     ->withErrors($validator)
+                     ->withInput();
+      }
+      else
+      {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = User::encryptPassword($request->password);
 
-       $user = User::find($id);
-       $user->name = $request->name;
-       $user->email = $request->email;
-       $user->password = bcrypt($request->password);
-
-       $user->save();
+        $user->save();
+      }
     }
 
 }

@@ -75,7 +75,6 @@ class ArticlesController extends Controller
   {
      $article = Article::find($id);
      $this->authorize('update', $article);
-
      $article->title = $request->title;
      $article->content = $request->content;
      $article->save();

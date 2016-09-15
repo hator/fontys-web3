@@ -48,8 +48,8 @@ class User extends Authenticatable
             'password' => 'required|min:4|confirmed',
         ]);
     }
-    
-    public static function setPassword($password)
+
+    public static function encryptPassword($password)
     {
       return bcrypt($password);
     }
