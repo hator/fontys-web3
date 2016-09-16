@@ -16,8 +16,9 @@
     {!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
 {!! Form::close() !!}
 
-{{ Form::open(array('url' => 'articles/' . $article->id, 'class' => 'pull-right')) }}
+{{ Form::open(array('url' => 'articles/' . $article->id)) }}
     {{ Form::hidden('_method', 'DELETE') }}
-    {{ Form::submit('Delete this article', array('class' => 'btn btn-warning')) }}
+    {{ Form::submit('Delete this article', array('class' => 'btn btn-warning', 'style' => 'margin-top: 10px')) }}
 {{ Form::close() }}
+
 @endsection

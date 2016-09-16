@@ -10,6 +10,30 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <style>
+        body {background-color: powderblue;}
+        .top-right 
+        {
+            border-bottom: 2px solid darkblue;
+            margin-bottom: 30px;
+        }
+        .top-right .btn
+        {
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .panel
+        {
+            padding: 10px;
+        }
+        .article-content
+        {
+            margin: 10px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -39,8 +63,15 @@
             </div>
 
             <div class="content">
-                @yield('content')
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="panel panel-default">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     </body>
 </html>
