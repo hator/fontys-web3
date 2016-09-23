@@ -19,9 +19,9 @@ class ProfileController extends Controller
 		$this->middleware('auth');
 	}
 
-	protected function validator(array $data)
+	protected function validator(array $data, $id)
 	{
-		return User::validator($data);
+		return User::edit_validator($data, $id);
 	}
 
 	/**
@@ -53,7 +53,7 @@ class ProfileController extends Controller
 	{
 		$user = User::find($id);
 		$this->authorize('update', $user);
-		$validator = $this->validator($request->all());
+		$validator = $this->validator($request->all(), $id);
 		if($validator->fails())
 		{
 			return redirect()

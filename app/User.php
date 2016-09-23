@@ -49,6 +49,15 @@ class User extends Authenticatable
         ]);
     }
 
+    public static function edit_validator(array $data, $id)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,'.$id,
+            'password' => 'required|min:4',
+        ]);
+    }
+
     public static function encryptPassword($password)
     {
       return bcrypt($password);
