@@ -9,6 +9,8 @@
 <div class="panel-body">
     You are logged in as user {{ $user->name }}
     <ul>
+    	<li>{{ HTML::image('img/picture.jpg') }}</li>
+    	<li><img src="../../storage/photos/{{$user->image_path}}" alt="Profile Picture" style="width:304px;height:228px;"></li>
         <li>Name: <strong>{{ $user->name }}</strong></li>
         <li>Email: <strong>{{ $user->email }}</strong></li>
     </ul>

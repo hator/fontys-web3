@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input; 
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -66,8 +68,16 @@ class ProfileController extends Controller
 			$user->name = $request->name;
 			$user->email = $request->email;
 			$user->password = User::encryptPassword($request->password);
-
+			//$user->image_path = $request->
+			$file = array('image' => Input::file('image'));
+			 $destinationPath = 'uploads'; // upload path
+		      $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+		      $fileName = rand(11111,99999).'.'.$extension; // renameing image
+		      $path = Storage::putFile('public/photos', $request->file('image'), 'public');
+		      // sending back with message
+		      $user->image_path = $path;
 			$user->save();
+
 
 			return redirect()->action('ProfileController@show', ['id' => $id]);
 		}

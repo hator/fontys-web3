@@ -3,7 +3,7 @@
 @section('title', 'Edit your profile')
 
 @section('content')
-{{ Form::model($user, array('route' => array('profile.update', $user->id), 'method' => 'PUT')) }}
+{{ Form::model($user, array('route' => array('profile.update', $user->id), 'method' => 'PUT', 'files'=>true)) }}
 
 <div class="form-group">
     {!! Form::label('name', 'Name:', ['class' => 'control-label']) !!}
@@ -37,7 +37,7 @@
 
 <div class="form-group">
     {!! Form::label('Profile Image') !!}
-    {!! Form::file('image', null) !!}
+    {!! Form::file('image') !!}
 </div>
 
 {!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
