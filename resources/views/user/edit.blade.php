@@ -35,6 +35,11 @@
     </span>
 @endif
 
+<div class="form-group">
+    {!! Form::label('Profile Image') !!}
+    {!! Form::file('image', null) !!}
+</div>
+
 {!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
 
 {!! Form::close() !!}
