@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use Input;
 use App\Http\Requests;
 use App\Article;
 
@@ -58,6 +59,9 @@ class ArticlesController extends Controller
         $article = new Article;
         $article->title = $request->title;
         $article->content = $request->content;
+        if(Input::file('image')) {
+            $article->image_path = $this->processAndUploadImage(Input::file('image'));
+        }
         Auth::user()->articles()->save($article);
 
         return redirect()->action('ArticlesController@show', ['id' => $article->id]);
@@ -77,6 +81,9 @@ class ArticlesController extends Controller
         $this->authorize('update', $article);
         $article->title = $request->title;
         $article->content = $request->content;
+        if(Input::file('image')) {
+            $article->image_path = $this->processAndUploadImage(Input::file('image'));
+        }
         $article->save();
 
         return redirect()->action('ArticlesController@show', ['id' => $article->id]);
@@ -87,8 +94,35 @@ class ArticlesController extends Controller
         $article = Article::find($id);
         $this->authorize('delete', $article);
 
+        // TODO delete files
+
         $article->delete();
 
         return redirect()->action('ArticlesController@index');
+    }
+
+    private function processAndUploadImage($article, $file) {
+        $img = Image::make($file);
+        $img->widen(100, function ($constraint) {
+            $constraint->upsize();
+        });
+
+        $pixelated = Image::make($img);
+        $pixelated->pixelate(5);
+
+        $filename = $this->articleImageFilepath($article, $img, 'jpg');
+        $filename_pixelated = $filename . '.pixelated.jpg';
+
+        $img->stream('jpg');
+        $pixelated->stream('jpg');
+
+        Storage::put('public/'.$filename, $img);
+        Storage::put('public/'.$filename_pixelated, $pixelated);
+
+        return 'storage/'.$filename;
+    }
+
+    private function articleImageFilepath($article, $img, $extension) {
+        return 'article/' . sha1($article->id . $img->filesize() . time()) . '.' . $extension;
     }
 }
