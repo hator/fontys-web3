@@ -70,10 +70,12 @@ class ProfileController extends Controller
             $user->email = $request->email;
             $user->password = User::encryptPassword($request->password);
 
-            $image = $this->processProfileImage(Input::file('image'), 'jpg');
-            $filename = $this->profileImageFilepath($user, $image, 'jpg');
-            Storage::put('public/'.$filename, $image);
-            $user->image_path = 'storage/'.$filename;
+            if(Input::file('image')) {
+                $image = $this->processProfileImage(Input::file('image'), 'jpg');
+                $filename = $this->profileImageFilepath($user, $image, 'jpg');
+                Storage::put('public/'.$filename, $image);
+                $user->image_path = 'storage/'.$filename;
+            }
 
             $user->save();
 
@@ -93,6 +95,6 @@ class ProfileController extends Controller
     }
 
     private function profileImageFilepath($user, $img, $extension) {
-        return sha1($user->id . $img->filesize() . time()) . '.' . $extension;
+        return 'profile/' . sha1($user->id . $img->filesize() . time()) . '.' . $extension;
     }
 }
