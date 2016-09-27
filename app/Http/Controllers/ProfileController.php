@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Input; 
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\User;
-use Illuminate\Support\Facades\Storage;
+use Storage;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -68,18 +69,30 @@ class ProfileController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = User::encryptPassword($request->password);
-            //$user->image_path = $request->
-            $file = array('image' => Input::file('image'));
-            $destinationPath = 'uploads'; // upload path
-            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-            $fileName = rand(11111,99999).'.'.$extension; // renameing image
-            $path = Storage::putFile('public/photos', $request->file('image'), 'public');
-            // sending back with message
-            $user->image_path = $path;
-            $user->save();
 
+            $image = $this->processProfileImage(Input::file('image'), 'jpg');
+            $filename = $this->profileImageFilename($user, $image, 'jpg');
+            Storage::put($filename, $image);
+            $user->image_path = $filename;
+
+            $user->save();
 
             return redirect()->action('ProfileController@show', ['id' => $id]);
         }
+    }
+
+    private function processProfileImage($file, $filetype) {
+        $img = Image::make($file);
+
+        $img->widen(100, function ($constraint) {
+            $constraint->upsize();
+        });
+        $img->stream('jpg');
+
+        return $img;
+    }
+
+    private function profileImageFilename($user, $img, $extension) {
+        return sha1($user->id . $img->filesize() . time()) . '.' . $extension;
     }
 }
