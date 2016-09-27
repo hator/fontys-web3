@@ -9,7 +9,7 @@
 <div class="panel-body">
     You are logged in as user {{ $user->name }}
     <ul>
-        <li>{{ Html::image(asset($user->image_path)) }}</li>
+        <li>{{ Html::image($user->image_path) }}</li>
         <li>Name: <strong>{{ $user->name }}</strong></li>
         <li>Email: <strong>{{ $user->email }}</strong></li>
     </ul>
