@@ -26,7 +26,7 @@ class ChangeAuthorNameToUserForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('Article', function (Blueprint $table) {
+        Schema::table('articles', function (Blueprint $table) {
             $table->string('author');
             $table->dropColumn('author_id');
         });
