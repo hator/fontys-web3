@@ -109,11 +109,13 @@ class ArticlesController extends Controller
             $constraint->upsize();
         });
 
+        $this->addWatermark($img);
         $img->stream('jpg');
         $filepath = $this->articleImageFilepath($article, $img, 'jpg');
         Storage::put('public/'.$filepath, $img);
 
         $img->pixelate(5);
+        $this->addWatermark($img);
         $img->stream('jpg');
         $filepath_pixelated = $filepath . '.pixelated.jpg';
         Storage::put('public/'.$filepath_pixelated, $img);
@@ -123,5 +125,13 @@ class ArticlesController extends Controller
 
     private function articleImageFilepath($article, $img, $extension) {
         return 'article/' . sha1($article->id . $img->filesize() . time()) . '.' . $extension;
+    }
+
+    private function addWatermark($img) {
+        $img->text('AwesomeCMS', 50, $img->height() - 20, function($font) {
+            $font->file(3);
+            $font->color('rgba(255, 255, 255, 0.75)');
+            $font->align('center');
+        });
     }
 }

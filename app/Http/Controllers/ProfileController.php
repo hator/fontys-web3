@@ -100,6 +100,11 @@ class ProfileController extends Controller
         });
 
         $img->mask($mask);
+        $img->text('AwesomeCMS', 50, $height-20, function($font) {
+            $font->file(3);
+            $font->color('rgba(255, 255, 255, 0.5)');
+            $font->align('center');
+        });
         $img->stream($filetype);
 
         return $img;
