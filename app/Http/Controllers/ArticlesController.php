@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Input;
+use Image;
+use Storage;
 use App\Http\Requests;
 use App\Article;
 
@@ -82,7 +84,7 @@ class ArticlesController extends Controller
         $article->title = $request->title;
         $article->content = $request->content;
         if(Input::file('image')) {
-            $article->image_path = $this->processAndUploadImage(Input::file('image'));
+            $article->image_path = $this->processAndUploadImage($article, Input::file('image'));
         }
         $article->save();
 
@@ -103,23 +105,20 @@ class ArticlesController extends Controller
 
     private function processAndUploadImage($article, $file) {
         $img = Image::make($file);
-        $img->widen(100, function ($constraint) {
+        $img->fit(300, 300, function ($constraint) {
             $constraint->upsize();
         });
 
-        $pixelated = Image::make($img);
-        $pixelated->pixelate(5);
-
-        $filename = $this->articleImageFilepath($article, $img, 'jpg');
-        $filename_pixelated = $filename . '.pixelated.jpg';
-
         $img->stream('jpg');
-        $pixelated->stream('jpg');
+        $filepath = $this->articleImageFilepath($article, $img, 'jpg');
+        Storage::put('public/'.$filepath, $img);
 
-        Storage::put('public/'.$filename, $img);
-        Storage::put('public/'.$filename_pixelated, $pixelated);
+        $img->pixelate(5);
+        $img->stream('jpg');
+        $filepath_pixelated = $filepath . '.pixelated.jpg';
+        Storage::put('public/'.$filepath_pixelated, $img);
 
-        return 'storage/'.$filename;
+        return 'storage/'.$filepath;
     }
 
     private function articleImageFilepath($article, $img, $extension) {

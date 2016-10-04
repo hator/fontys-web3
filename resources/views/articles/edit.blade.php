@@ -3,7 +3,7 @@
 @section('title', 'Edit article #' . $article->id . ' ' . $article->title)
 
 @section('content')
-{{ Form::model($article, array('route' => array('articles.update', $article->id), 'method' => 'PUT')) }}
+{{ Form::model($article, array('route' => array('articles.update', $article->id), 'method' => 'PUT', 'files' => true)) }}
     <div class="form-group">
         {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
         {!! Form::text('title', null, ['class' => 'form-control']) !!}
