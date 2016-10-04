@@ -2,7 +2,8 @@
 
 @section('content')
 {!! Form::open([
-    'route' => 'articles.store'
+    'route' => 'articles.store',
+    'files' => true,
 ]) !!}
 
 <div class="form-group">

@@ -62,7 +62,7 @@ class ArticlesController extends Controller
         $article->title = $request->title;
         $article->content = $request->content;
         if(Input::file('image')) {
-            $article->image_path = $this->processAndUploadImage(Input::file('image'));
+            $article->image_path = $this->processAndUploadImage($article, Input::file('image'));
         }
         Auth::user()->articles()->save($article);
 
