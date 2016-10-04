@@ -9,7 +9,9 @@
 <div class="panel-body">
     You are logged in as user {{ $user->name }}
     <ul>
+    	@if ($user->image_path != "")
         <li>{{ Html::image($user->image_path) }}</li>
+        @endif
         <li>Name: <strong>{{ $user->name }}</strong></li>
         <li>Email: <strong>{{ $user->email }}</strong></li>
     </ul>
