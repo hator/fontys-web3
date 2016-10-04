@@ -5,11 +5,11 @@
 @section('content')
 
 <div class="panel-heading">Dashboard</div>
+
 <div class="panel-body">
-    You are logged in as user {{ url($user->name) }}
+    You are logged in as user {{ $user->name }}
     <ul>
-    	<li></li>
-        <li>{{ Html::image($user->image_path,"", array('class' => 'img-circle')) }}</li>
+        <li>{{ Html::image($user->image_path) }}</li>
         <li>Name: <strong>{{ $user->name }}</strong></li>
         <li>Email: <strong>{{ $user->email }}</strong></li>
     </ul>
