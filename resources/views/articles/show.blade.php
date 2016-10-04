@@ -8,6 +8,7 @@
   <div class="article">
     <h1>{{ $article->title }} <span class="article-id">#{{ $article->id }}</span></h1>
     <h3 class="article-author">{{ $article->author->name }}</h3>
+    <div>{{ Html::image($article->image_path) }}</div>
     <div class="article-content">{{ $article->content }}</div>
   </div>
   <a class="btn btn-warning" href="{{ action('ArticlesController@edit', ['id' => $article->id]) }}">Edit/delete article</a>
