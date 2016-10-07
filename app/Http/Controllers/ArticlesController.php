@@ -9,6 +9,9 @@ use Image;
 use Storage;
 use App\Http\Requests;
 use App\Article;
+use PDF;
+use View;
+use App;
 
 class ArticlesController extends Controller
 {
@@ -133,5 +136,12 @@ class ArticlesController extends Controller
             $font->color('rgba(255, 255, 255, 0.75)');
             $font->align('center');
         });
+    }
+
+    public function download(Request $request)
+    {
+        $article = Article::find($request->id);
+        $pdf = PDF::loadView('articles.download', array('article' => $article));
+        return $pdf->download('htmltopdfview.pdf');
     }
 }

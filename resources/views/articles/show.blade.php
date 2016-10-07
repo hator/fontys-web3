@@ -14,5 +14,6 @@
     @endif
     <div class="article-content">{{ $article->content }}</div>
   </div>
+  <a class="btn btn-info" href="{{ action('ArticlesController@download', ['id' => $article->id]) }}">Download as PDF</a>
   <a class="btn btn-warning" href="{{ action('ArticlesController@edit', ['id' => $article->id]) }}">Edit/delete article</a>
 @endsection

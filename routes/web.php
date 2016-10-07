@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/download', 'ArticlesController@download');
+
 Route::get('/', 'ArticlesController@index');
 
 Route::resource('articles', 'ArticlesController');
