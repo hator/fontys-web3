@@ -9,8 +9,11 @@
     <h1>{{ $article->title }} <span class="article-id">#{{ $article->id }}</span></h1>
     <h3 class="article-author">{{ $article->author->name }}</h3>
     @if ($article->image_path != "")
-    	<img src="/{{$article->image_path}}" onmouseover="this.src='/{{$article->image_path}}.pixelated.jpg';" 
-    	onmouseout="this.src='/{{$article->image_path}}';" />
+        <img
+          src="{{ asset($article->image_path) }}"
+          onmouseover="this.src='{{ asset($article->image_path) }}.pixelated.jpg';" 
+          onmouseout="this.src='{{ asset($article->image_path) }}';"
+          >
     @endif
     <div class="article-content">{{ $article->content }}</div>
   </div>

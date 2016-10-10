@@ -14,7 +14,6 @@
 
 - bugfixy
     - przerabianie enterów na <br> przy uploadowaniu artykułów
-    - image path zaczyna się od /
 
 - drobny refactor
 
@@ -24,3 +23,5 @@ DONE:
     - dodawanie
     - cośtam jeszcze
 
+- bugfixy
+    - image path zaczyna się od /
