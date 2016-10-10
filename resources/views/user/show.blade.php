@@ -9,8 +9,8 @@
 <div class="panel-body">
     Profile name: {{ $user->name }}
     <ul>
-    	@if ($user->image_path != "")
-        <li>{{ Html::image($user->image_path) }}</li>
+        @if ($user->image_path)
+            <li>{{ Html::image($user->image_path) }}</li>
         @endif
         <li>Name: <strong>{{ $user->name }}</strong></li>
         <li>Email: <strong>{{ $user->email }}</strong></li>

@@ -2,8 +2,6 @@
 - any useful feature
     - search
 
-- drobny refactor
-
 DONE:
 - dokończyć API
     - usuwanie
@@ -25,3 +23,5 @@ DONE:
         - update
         - delete
 
+- drobny refactor
+    - refactor obrazków w artykułach

@@ -37,9 +37,9 @@
             <h1>{{ $article->title }} <span class="article-id">#{{ $article->id }}</span></h1>
             <h3 class="article-author">{{ $article->author->name }}</h3>
         </div>
-        @if ($article->image_path != "")
+        @if ($article->image_path)
             <div class="article-image">
-                <img src="{{getcwd()}}/{{$article->image_path}}" />
+                <img src="{{ getcwd() }}/{{ App\ArticleImage::getPublicPath($article) }}" />
             </div>
         @endif
         <div class="clearfix"></div>

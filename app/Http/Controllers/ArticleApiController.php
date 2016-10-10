@@ -37,7 +37,6 @@ class ArticleApiController extends Controller
         if($article) {
             if(Auth::once(['email' => $email, 'password' => $password])) {
                 if(Auth::user()->can('create', $article)) {
-                    // TODO images
                     $article->title = $request->title;
                     $article->content = $request->content;
                     Auth::user()->articles()->save($article);
@@ -87,7 +86,6 @@ class ArticleApiController extends Controller
         if($article) {
             if(Auth::once(['email' => $email, 'password' => $password])) {
                 if(Auth::user()->can('update', $article)) {
-                    // TODO images
                     $article->title = $request->title;
                     $article->content = $request->content;
                     $article->save();
@@ -121,8 +119,7 @@ class ArticleApiController extends Controller
             if(Auth::once(['email' => $email, 'password' => $password])) {
                 if(Auth::user()->can('delete', $article)) {
 
-                    // TODO delete files
-
+                    Storage::delete(ArticleImage::getImagesLocalPaths($article));
                     $article->delete();
 
                     return $this->responseOk();

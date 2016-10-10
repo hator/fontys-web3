@@ -8,11 +8,11 @@
   <div class="article">
     <h1>{{ $article->title }} <span class="article-id">#{{ $article->id }}</span></h1>
     <h3 class="article-author">{{ $article->author->name }}</h3>
-    @if ($article->image_path != "")
+    @if ($article->image_path)
         <img
-          src="{{ asset($article->image_path) }}"
-          onmouseover="this.src='{{ asset($article->image_path) }}.pixelated.jpg';" 
-          onmouseout="this.src='{{ asset($article->image_path) }}';"
+          src="{{ asset(App\ArticleImage::getPublicPath($article)) }}"
+          onmouseover="this.src='{{ asset(App\ArticleImage::getPublicPath($article)) }}.pixelated.jpg';"
+          onmouseout="this.src='{{ asset(App\ArticleImage::getPublicPath($article)) }}';"
           >
     @endif
     <div class="article-content">{!! nl2br(e($article->content)) !!}</div>
