@@ -2,9 +2,6 @@
 - any useful feature
     - search
 
-- bugfixy
-    - przerabianie enterów na <br> przy uploadowaniu artykułów
-
 - drobny refactor
 
 DONE:
@@ -15,6 +12,7 @@ DONE:
 
 - bugfixy
     - image path zaczyna się od /
+    - przerabianie enterów na <br> przy uploadowaniu artykułów
 
 - sekcja admin
     - admini

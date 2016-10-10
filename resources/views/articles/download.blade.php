@@ -43,7 +43,7 @@
             </div>
         @endif
         <div class="clearfix"></div>
-        <p class="article-content">{{ $article->content }}</p>
+        <p class="article-content">{!! nl2br(e($article->content)) !!}</p>
     </body>
 </html>
 
