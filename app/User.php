@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
       return bcrypt($password);
     }
+
+    public function isAdmin()
+    {
+        return $this->admin; // this looks for an admin column in your users table
+    }
 }
