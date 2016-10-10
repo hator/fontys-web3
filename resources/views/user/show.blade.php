@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Your profile')
+@section('title', 'Profile')
 
 @section('content')
 
 <div class="panel-heading">Dashboard</div>
 
 <div class="panel-body">
-    You are logged in as user {{ $user->name }}
+    Profile name: {{ $user->name }}
     <ul>
     	@if ($user->image_path != "")
         <li>{{ Html::image($user->image_path) }}</li>
@@ -20,7 +20,7 @@
 <a class="btn btn-warning" href="{{ action('ProfileController@edit', ['id' => $user->id]) }}">Edit your profile</a>
 
 <div class="articles">
-    <h2>Your articles</h2>
+    <h2>Profile's articles</h2>
     @include('articles.list', array('articles' => $articles))
 </div>
 @endsection

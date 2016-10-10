@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Article;
 use Storage;
 use Image;
 
@@ -20,6 +21,21 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function showAdminPanel()
+    {
+        if(Auth::check())
+        {
+            $id = Auth::id();
+            $adminUser = User::find($id);
+            if($adminUser->isAdmin())
+            {
+                $users = User::all();
+                $articles = Article::all();
+                return view('admin.panel', array('users' => $users, 'articles' => $articles));
+            }
+        }
     }
 
     protected function validator(array $data, $id)
@@ -68,7 +84,10 @@ class ProfileController extends Controller
         {
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = User::encryptPassword($request->password);
+            if($request->password != '')
+            {
+                $user->password = User::encryptPassword($request->password);
+            }
 
             if(Input::file('image')) {
                 $imageFiletype = 'png';
@@ -84,7 +103,8 @@ class ProfileController extends Controller
         }
     }
 
-    private function processProfileImage($file, $filetype) {
+    private function processProfileImage($file, $filetype) 
+    {
         $img = Image::make($file);
 
         $img->fit(100, 100, function ($constraint) {
@@ -110,7 +130,8 @@ class ProfileController extends Controller
         return $img;
     }
 
-    private function profileImageFilepath($user, $img, $extension) {
+    private function profileImageFilepath($user, $img, $extension) 
+    {
         return 'profile/' . sha1($user->id . $img->filesize() . time()) . '.' . $extension;
     }
 }

@@ -18,7 +18,7 @@ class UserPolicy
      */
     public function show(User $user, User $profile)
     {
-        return $user->id === $profile->id;
+        return $user->id === $profile->id || $user->isAdmin();
     }
 
     /**
@@ -41,7 +41,7 @@ class UserPolicy
      */
     public function update(User $user, User $profile)
     {
-        return $user->id === $profile->id;
+        return $user->id === $profile->id || $user->isAdmin();
     }
 
     /**
@@ -53,6 +53,6 @@ class UserPolicy
      */
     public function delete(User $user, User $profile)
     {
-        return $user->id === $profile->id;
+        return $user->id === $profile->id || $user->isAdmin();
     }
 }
