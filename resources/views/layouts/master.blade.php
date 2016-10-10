@@ -12,27 +12,25 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <style>
-        body {background-color: powderblue;}
-        .top-right 
-        {
+        body {
+            background-color: powderblue;
+        }
+        .top-right {
             border-bottom: 2px solid darkblue;
             margin-bottom: 30px;
         }
-        .top-right .btn
-        {
+        .top-right .btn {
             margin-left: 20px;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        .panel
-        {
+        .panel {
             padding: 10px;
         }
-        .article-content
-        {
+        .article-content {
             margin: 10px;
             word-wrap: break-word;
-            white-space: pre-wrap;
+            text-align: justify;
         }
         </style>
     </head>
