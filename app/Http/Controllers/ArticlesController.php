@@ -142,6 +142,6 @@ class ArticlesController extends Controller
     {
         $article = Article::find($request->id);
         $pdf = PDF::loadView('articles.download', array('article' => $article));
-        return $pdf->download('htmltopdfview.pdf');
+        return $pdf->download($article->title.'.pdf');
     }
 }
