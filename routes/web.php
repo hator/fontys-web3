@@ -24,3 +24,5 @@ Route::resource('/profile', 'ProfileController');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/adminpanel', 'ProfileController@showAdminPanel')->middleware('auth', 'admin');
+
+Route::get('/search', 'ArticlesController@search');

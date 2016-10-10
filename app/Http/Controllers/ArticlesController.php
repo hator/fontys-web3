@@ -38,6 +38,13 @@ class ArticlesController extends Controller
         return view('articles.show', array('article' => $article));
     }
 
+    public function search()
+    {
+        $keyword = Input::get('keyword', '');
+        $articles = Article::SearchByKeyword($keyword)->get();
+        return view('articles.index', array('articles' => $articles));
+    }
+
     /**
      * Display the article creation form.
      *

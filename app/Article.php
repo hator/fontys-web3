@@ -16,6 +16,17 @@ class Article extends Model
         return $this->belongsTo('App\User', 'author_id');
     }
 
+    public function scopeSearchByKeyword($query, $keyword)
+    {
+        if ($keyword!='') 
+        {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("title", "LIKE","%$keyword%")
+                    ->orWhere("content", "LIKE", "%$keyword%");
+            });
+        }
+    }
+
 }
 
 class ArticleOutputDTO {
