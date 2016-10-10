@@ -54,7 +54,7 @@ class User extends Authenticatable
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.$id,
-            'password' => 'required|min:4',
+            'password' => 'min:4',
         ]);
     }
 
