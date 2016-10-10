@@ -1,0 +1,24 @@
+- dokończyć API
+    - usuwanie
+    - dodawanie
+    - cośtam jeszcze
+
+- sekcja admin
+    - admini
+    - user
+        - create
+        - update
+        - delete
+    - articles
+        - create
+        - update
+        - delete
+
+- any useful feature
+    - search
+
+- bugfixy
+    - przerabianie enterów na <br> przy uploadowaniu artykułów
+    - image path zaczyna się od /
+
+- drobny refactor
