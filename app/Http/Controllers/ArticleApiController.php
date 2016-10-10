@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Article;
+use App\ArticleOutputDTO;
 
 class ArticleApiController extends Controller
 {
@@ -29,6 +30,29 @@ class ArticleApiController extends Controller
      */
     public function store(Request $request)
     {
+        $article = new Article;
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        if($article) {
+            if(Auth::once(['email' => $email, 'password' => $password])) {
+                if(Auth::user()->can('create', $article)) {
+                    // TODO images
+                    $article->title = $request->title;
+                    $article->content = $request->content;
+                    Auth::user()->articles()->save($article);
+
+                    $dto = ArticleOutputDTO::fromArticle($article);
+                    return $this->responseCreated($dto);
+                } else {
+                    return $this->responseForbidden();
+                }
+            } else {
+                return $this->responseUnauthorized();
+            }
+        } else {
+            return $this->responseNotFound();
+        }
     }
 
     /**
@@ -56,7 +80,29 @@ class ArticleApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        if($article) {
+            if(Auth::once(['email' => $email, 'password' => $password])) {
+                if(Auth::user()->can('update', $article)) {
+                    // TODO images
+                    $article->title = $request->title;
+                    $article->content = $request->content;
+                    $article->save();
+
+                    $dto = ArticleOutputDTO::fromArticle($article);
+                    return $this->responseOk($dto);
+                } else {
+                    return $this->responseForbidden();
+                }
+            } else {
+                return $this->responseUnauthorized();
+            }
+        } else {
+            return $this->responseNotFound();
+        }
     }
 
     /**
@@ -71,15 +117,43 @@ class ArticleApiController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        if(Auth::once(['email' => $email, 'password' => $password])) {
-            $this->authorize('delete', $article);
+        if($article) {
+            if(Auth::once(['email' => $email, 'password' => $password])) {
+                if(Auth::user()->can('delete', $article)) {
 
-            // TODO delete files
+                    // TODO delete files
 
-            $article->delete();
+                    $article->delete();
 
-            return response()->json((object)[]);
+                    return $this->responseOk();
+                } else {
+                    return $this->responseForbidden();
+                }
+            } else {
+                return $this->responseUnauthorized();
+            }
+        } else {
+            return $this->responseNotFound();
         }
+    }
 
+    private function responseOk($returnValue = []) {
+        return response()->json((object)$returnValue);
+    }
+
+    private function responseCreated($returnValue) {
+        return response()->json((object)$returnValue, 201);
+    }
+
+    private function responseForbidden() {
+        return response()->json((object)[], 403);
+    }
+
+    private function responseUnauthorized() {
+        return response()->json((object)[], 401);
+    }
+
+    private function responseNotFound() {
+        return response()->json((object)[], 404);
     }
 }

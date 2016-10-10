@@ -59,8 +59,6 @@ class ArticlesController extends Controller
     {
         $this->authorize('create', Article::class);
 
-        // TODO Validate the request...
-
         $article = new Article;
         $article->title = $request->title;
         $article->content = $request->content;

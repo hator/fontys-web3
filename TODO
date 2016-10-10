@@ -1,8 +1,3 @@
-- dokończyć API
-    - usuwanie
-    - dodawanie
-    - cośtam jeszcze
-
 - sekcja admin
     - admini
     - user
@@ -22,3 +17,10 @@
     - image path zaczyna się od /
 
 - drobny refactor
+
+DONE:
+- dokończyć API
+    - usuwanie
+    - dodawanie
+    - cośtam jeszcze
+
