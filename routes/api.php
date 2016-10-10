@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('articles', 'ArticleApiController',
-    ['except' => ['create', 'edit']]
-);
+Route::group(['as' => 'api::'], function() {
+    Route::resource('articles', 'ArticleApiController',
+        ['except' => ['create', 'edit']]
+    );
+});
