@@ -44,7 +44,9 @@
                     @can('create', App\Article::class)
                         <a class="btn btn-success" href="{{ action('ArticlesController@create') }}">Create new article</a>
                     @endcan
-
+                    @if(Auth::user()->isAdmin())
+                        <a class="btn btn-info" href="{{ action('ProfileController@showAdminPanel') }}">Admin panel</a>
+                    @endif
                     <a href="{{ url('/logout') }}"
                         class="btn btn-danger"
                         onclick="event.preventDefault();
