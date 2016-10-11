@@ -5,7 +5,7 @@
 @section('content')
 	<form action="{{ action('ArticlesController@search')}}">
 		<input type="text" name="keyword">
-		<input type="submit" value="Submit">
+		<input type="submit" value="Search">
 	</form>
 	<h1>All Articles</h1>
 	<div id="articles">
