@@ -12,9 +12,11 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         DB::table('articles')->insert([
-          'title' => "Polsa stronka webowa",
-          'content' => "raz dwa trzy",
-          'author_id' => 1,
+          'title' => "Article number uno",
+          'content' => "This is my first article, it is not really interesting.
+
+However it is a good example of how the text is displayed on the website.",
+          'author_id' => 2,
         ]);
 
         DB::table('articles')->insert([
@@ -28,7 +30,7 @@ Vestibulum non aliquam quam. Mauris nec quam eu leo tristique pharetra eu eu odi
 Vestibulum dictum tempor eros, sit amet venenatis dolor. Maecenas dui tortor, convallis in pretium pulvinar, commodo quis purus. In tellus urna, pretium a mattis vitae, accumsan porttitor nisl. Proin quis tristique metus, ut tempus risus. Donec gravida turpis eu turpis imperdiet, et egestas nibh volutpat. Vivamus eu suscipit erat. Phasellus sodales neque et gravida semper. Quisque ornare, metus vitae condimentum bibendum, nisi sem consectetur massa, et placerat sem ante non erat. Donec id mi dui. Vivamus euismod justo nec risus dapibus pellentesque. Integer quis egestas urna, quis mattis est. In at pretium erat.
 
 Praesent vulputate augue at metus condimentum, ut sodales urna lobortis. Pellentesque interdum vestibulum dolor id luctus. Aliquam bibendum id dui eu mattis. Proin sit amet ligula dui. Praesent diam nisi, luctus ut laoreet sed, congue sit amet lorem. Integer semper ipsum ac orci molestie venenatis. Cras ut velit nec libero imperdiet fringilla. Mauris eget nulla metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse non urna malesuada, porttitor diam maximus, tristique mi. Cras vitae urna vestibulum, euismod tellus quis, tempor ipsum.",
-          'author_id' => 1,
+          'author_id' => 2,
         ]);
     }
 }
