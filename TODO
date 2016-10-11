@@ -1,6 +1,7 @@
+final testing:
+    - przycisk search
+    - buttony menu gdy niezalogowany
 
-- any useful feature
-    - search
 
 DONE:
 - dokończyć API
@@ -25,3 +26,6 @@ DONE:
 
 - drobny refactor
     - refactor obrazków w artykułach
+
+- any useful feature
+    - search
