@@ -1,6 +1,7 @@
 - final testing
-    - nie wyświetlać przycisku edit article jeśli nie masz uprawnień
     - dodać README
+    - dodać tytuł do "You are not authorized"
+    - dodać tytuł do admin panelu
 
 
 DONE:
@@ -9,6 +10,8 @@ DONE:
     - nie pokazuje się tytuł stronki na tworzeniu artykułu
     - nie pokazuje się tytuł stronki na rejestracji i loginie
     - wywalić "Forgot your password"
+    - nie wyświetlać przycisku edit article jeśli nie masz uprawnień
+    - nie działa dodawanie artykułów u Rurka
 
 - dokończyć API
     - usuwanie
