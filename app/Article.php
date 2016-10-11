@@ -109,12 +109,12 @@ class ArticleImage
         }
     }
 
-    private static function getPixelatedPath(string $original)
+    private static function getPixelatedPath($original)
     {
         return $original . '.pixelated.jpg';
     }
 
-    private static function getLocalPathStr(string $path)
+    private static function getLocalPathStr($path)
     {
         return 'public/'.$path;
     }
