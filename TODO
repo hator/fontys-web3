@@ -1,6 +1,5 @@
 - final testing
     - dodać README
-    - dodać tytuł do "You are not authorized"
 
 
 DONE:
@@ -11,6 +10,8 @@ DONE:
     - wywalić "Forgot your password"
     - nie wyświetlać przycisku edit article jeśli nie masz uprawnień
     - nie działa dodawanie artykułów u Rurka
+    - dodać tytuł do "You are not authorized"
+    - dodać tytuł do admin panelu
 
 - dokończyć API
     - usuwanie
