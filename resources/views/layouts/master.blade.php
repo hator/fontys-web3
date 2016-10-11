@@ -37,9 +37,9 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
+                <a class="btn btn-primary" href="{{ action('ArticlesController@index') }}">List articles</a>
                 @if (Auth::check())
                     <a class="btn btn-warning" href="{{ action('HomeController@index') }}">Your profile</a>
-                    <a class="btn btn-primary" href="{{ action('ArticlesController@index') }}">List articles</a>
 
                     @can('create', App\Article::class)
                         <a class="btn btn-success" href="{{ action('ArticlesController@create') }}">Create new article</a>
