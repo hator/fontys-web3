@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'All Articles')
+@section('title', 'Admin panel')
 
 @section('content')
   <h1>All articles</h1>
