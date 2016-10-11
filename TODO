@@ -1,7 +1,3 @@
-- final testing
-    - dodać README
-
-
 DONE:
 - final testing
     - dodać user admin
@@ -12,6 +8,7 @@ DONE:
     - nie działa dodawanie artykułów u Rurka
     - dodać tytuł do "You are not authorized"
     - dodać tytuł do admin panelu
+    - dodać README
 
 - dokończyć API
     - usuwanie
