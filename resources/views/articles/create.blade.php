@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Create new article')
+
 @section('content')
 {!! Form::open([
     'route' => 'articles.store',
