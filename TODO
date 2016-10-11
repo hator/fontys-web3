@@ -1,8 +1,5 @@
 - final testing
-    - przycisk search
-    - buttony menu gdy niezalogowany
     - nie wyświetlać przycisku edit article jeśli nie masz uprawnień
-    - dodać link do admin panelu
     - dodać README
     - nie działa dodawanie artykułów u Rurka
 
