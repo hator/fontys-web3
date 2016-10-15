@@ -36,3 +36,33 @@ Whole process:
 * Attaching images to articles
 * Downloading articles as PDF
 * And many more... :)
+
+## API specification
+
+### Get all articles
+
+    GET /api/articles
+
+### Get specific article
+
+    GET /api/artilces/[id]
+
+### Create article
+
+    POST /api/articles
+
+    {"email": "user@user.com", "password": "qweasdzxc",
+     "title": "Title", "content": "Lorem Ipsum"}
+
+### Edit article
+
+    PUT /api/articles/[id]
+
+    {"email": "user@user.com", "password": "qweasdzxc",
+     "title": "Title", "content": "Lorem Ipsum"}
+
+### Delete article
+
+    DELETE /api/articles/[id]
+
+    {"email": "user@user.com", "password": "qweasdzxc"}
